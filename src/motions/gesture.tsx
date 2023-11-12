@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import "./App.css";
+import React from "react";
 import styled from "styled-components";
-import { motion, useMotionValue, useMotionValueEvent } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -25,18 +24,12 @@ const boxVariants = {
   },
 };
 
-function App() {
-  const x = useMotionValue(0);
-  useMotionValueEvent(x, "change", (x) => {
-    console.log(x);
-  });
-  console.log(x);
+function gesture() {
   return (
     <Wrapper>
-      <button onClick={() => x.set(200)}>click me</button>
-      <Box style={{ x }} drag="x" dragSnapToOrigin></Box>
+      <Box variants={boxVariants} whileHover="hover" whileTap="click"></Box>
     </Wrapper>
   );
 }
 
-export default App;
+export default gesture;
